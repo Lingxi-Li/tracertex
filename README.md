@@ -17,9 +17,10 @@ Windows `tracert` with extended geo-location and ISP info. E.g.,
 ## Usage
 
 ~~~
-tracertex.py -dst DST [-hop HOP]
+tracertex.py -dst DST [-hop HOP] [-ipv {4,6}]
 
 options:
   -dst DST    Target IP/hostname
   -hop HOP    Max number of hops to search for target (default 32)
+  -ipv {4,6}  Force using IPv4/v6
 ~~~

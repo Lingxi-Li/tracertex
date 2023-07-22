@@ -31,11 +31,18 @@ def process_line(line):
 parser = ArgumentParser()
 parser.add_argument('-dst', required=True, help='Target IP/hostname')
 parser.add_argument('-hop', type=int, default=32, help='Max number of hops to search for target')
+parser.add_argument('-ipv', choices=['4', '6'], help='Force using IPv4/v6')
 args = parser.parse_args()
 dst = args.dst
 hop = args.hop
+match args.ipv:
+    case '4': ipopt = '-4'
+    case '6': ipopt = '-6'
+    case   _: ipopt = ''
 try:
-    with Popen(f'tracert -d -h {hop} {dst}', text=True, bufsize=1, stderr=STDOUT, stdout=PIPE) as p:
+    cmdline = f'tracert -d -h {hop} {ipopt} {dst}'
+    print(cmdline)
+    with Popen(cmdline, text=True, bufsize=1, stderr=STDOUT, stdout=PIPE) as p:
         while line := p.stdout.readline():
             process_line(line)
 except KeyboardInterrupt:
