@@ -1,17 +1,17 @@
 # `tracert` Extended
 
-Windows `tracert` with extended country and ISP info. E.g.,
+Windows `tracert` with extended geo-location and ISP info. E.g.,
 
 ~~~
-  1     2 ms     2 ms     2 ms  192.168.2.2     LAN
-  2     7 ms     6 ms     5 ms  192.168.71.1    LAN
-  3     8 ms     5 ms     8 ms  100.86.52.1     LAN
-  4     *        *        *     Timeout
+  1    48 ms     4 ms    10 ms  192.168.2.2     LAN
+  2    27 ms     6 ms     6 ms  192.168.71.1    LAN
+  3    21 ms   146 ms    26 ms  100.86.52.1     LAN
+  4    24 ms     6 ms     9 ms  61.152.53.114   CN, Shanghai, China Telecom (Group)
   5     *        *        *     Timeout
-  6     7 ms     5 ms     7 ms  101.95.120.122  CN: China Telecom (Group)
-  7     *        *        *     Timeout
-  8     *        *        *     Timeout
-  9     *        *       66 ms  202.97.93.158   SG: CHINANET-BACKBONE
+  6     *        *        *     Timeout
+  7    29 ms    24 ms    12 ms  202.97.94.237   CN, Shanghai, CHINANET-BACKBONE
+  8     *        6 ms     *     202.97.50.193   CN, Shanghai, CHINANET-BACKBONE
+  9    79 ms    73 ms    74 ms  202.97.93.146   SG, Singapore, CHINANET-BACKBONE
 ~~~
 
 ~~~

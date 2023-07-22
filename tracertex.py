@@ -13,8 +13,9 @@ def fetch_info(ip):
     info = loads(response.text)
     if 'bogon' in info: return 'LAN'    
     country = info['country']
+    city = info["city"]
     isp = info['org'].split(' ', 1)[-1]
-    return f'{country}: {isp}'
+    return f'{country}, {city}, {isp}'
 
 def process_line(line):
     TIMEOUT = 'Timeout'
