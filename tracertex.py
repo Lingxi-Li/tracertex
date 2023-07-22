@@ -1,6 +1,6 @@
 from argparse import ArgumentParser
 from json import loads
-from re import split
+from re import split, sub
 from subprocess import PIPE, STDOUT, Popen
 
 from requests import get
@@ -40,7 +40,7 @@ match args.ipv:
     case '6': ipopt = '-6'
     case   _: ipopt = ''
 try:
-    cmdline = f'tracert -d -h {hop} {ipopt} {dst}'
+    cmdline = sub(' {2,}', ' ', f'tracert -d -h {hop} {ipopt} {dst}')
     print(cmdline)
     with Popen(cmdline, text=True, bufsize=1, stderr=STDOUT, stdout=PIPE) as p:
         while line := p.stdout.readline():
