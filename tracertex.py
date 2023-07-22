@@ -30,10 +30,12 @@ def process_line(line):
 
 parser = ArgumentParser()
 parser.add_argument('-dst', required=True, help='Target IP/hostname')
+parser.add_argument('-hop', type=int, default=32, help='Max number of hops to search for target')
 args = parser.parse_args()
 dst = args.dst
+hop = args.hop
 try:
-    with Popen(f'tracert -d {dst}', text=True, bufsize=1, stderr=STDOUT, stdout=PIPE) as p:
+    with Popen(f'tracert -d -h {hop} {dst}', text=True, bufsize=1, stderr=STDOUT, stdout=PIPE) as p:
         while line := p.stdout.readline():
             process_line(line)
 except KeyboardInterrupt:

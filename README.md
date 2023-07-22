@@ -14,9 +14,12 @@ Windows `tracert` with extended geo-location and ISP info. E.g.,
   9    79 ms    73 ms    74 ms  202.97.93.146   SG, Singapore, CHINANET-BACKBONE
 ~~~
 
+## Usage
+
 ~~~
-usage: tracertex.py -dst DST
+tracertex.py -dst DST [-hop HOP]
 
 options:
   -dst DST    Target IP/hostname
+  -hop HOP    Max number of hops to search for target (default 32)
 ~~~
